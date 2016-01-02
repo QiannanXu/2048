@@ -180,14 +180,20 @@ $(function() {
         scoreElem.innerHTML = score + "pts";
     };
 
+    var handleStart = function(e) {
+        e.preventDefault();
+        originalX = e.changedTouches[0].pageX;
+        originalY = e.changedTouches[0].pageY;
+    };
+
     var handleMove = function(e) {
         e.preventDefault();
-        var touches = e.changedTouches;
-        var length = touches.length;
-        originalX = touches[0].pageX;
-        originalY = touches[0].pageY;
-        currentX = touches[length-1].pageX;
-        currentY = touches[length-1].pageY;
+    };
+
+    var handleEnd = function(e) {
+        e.preventDefault();
+        currentX = e.changedTouches[0].pageX;
+        currentY = e.changedTouches[0].pageY;
 
         if(currentX > originalX && currentY > originalY){
             diffX = currentX - originalX;
@@ -234,7 +240,9 @@ $(function() {
         keyPress(e.keyCode);
     };
 
+    touchElem.addEventListener("touchstart", handleStart, false);
     touchElem.addEventListener("touchmove", handleMove, false);
+    touchElem.addEventListener("touchend", handleEnd, false);
 
     initGrid();
 });
