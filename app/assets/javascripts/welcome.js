@@ -121,7 +121,7 @@ $(function() {
             for(y = 0; y < 4; y++){
                 for(x = 0; x <= 2; x++) {
                     for(j = 3; j > x; j--) {
-                        if(grid[j][y] > grid[j-1][y]) {
+                        if(grid[j][y] > grid[j-1][y] && (grid[j][y]===-1 || grid[j-1][y]===-1)) {
                             grid[j-1][y] = grid[j][y];
                             grid[j][y] = -1;
                         }
@@ -133,7 +133,7 @@ $(function() {
             for(x = 0; x < 4; x++){
                 for(y = 3; y > 0; y--){
                     for(j = 0; j < y; j++){
-                        if(grid[x][j] > grid[x][j+1]){
+                        if(grid[x][j] > grid[x][j+1] && (grid[x][j]===-1 || grid[x][j+1]===-1)){
                             grid[x][j+1] = grid[x][j];
                             grid[x][j] = -1;
                         }
@@ -145,7 +145,7 @@ $(function() {
             for(y = 0; y < 4; y++){
                 for(x = 3; x >= 1; x--){
                     for(j = 0; j < x; j++){
-                        if(grid[j][y] > grid[j+1][y]){
+                        if(grid[j][y] > grid[j+1][y] &&(grid[j][y]===-1 || grid[j+1][y]===-1)){
                             grid[j+1][y] = grid[j][y];
                             grid[j][y] = -1;
                         }
@@ -157,7 +157,7 @@ $(function() {
             for(x = 0; x < 4; x++){
                 for(y = 0; y < 3; y++){
                     for(j = 3; j > y; j--){
-                        if(grid[x][j] > grid[x][j-1]){
+                        if(grid[x][j] > grid[x][j-1] && ( grid[x][j]===-1|| grid[x][j-1]===-1)){
                             grid[x][j-1] = grid[x][j];
                             grid[x][j] = -1;
                         }
