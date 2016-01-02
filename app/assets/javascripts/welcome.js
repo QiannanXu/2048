@@ -4,6 +4,7 @@ $(function() {
     var scoreElem = document.getElementsByClassName("value")[0];
 
     var score = 0, sum, grid;
+    var originalX, originalY, currentX, currentY, diffX, diffY;
 
     var initGrid = function() {
         grid = [[-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1]];
@@ -181,8 +182,8 @@ $(function() {
 
     var handleStart = function(e){
         e.preventDefault();
-        originalX = e.originalEvent.touches[0].clientX;
-        originalY = e.originalEvent.touches[0].clientY;
+        originalX = e.originalEvent.touches[0].pageX;
+        originalY = e.originalEvent.touches[0].pageY;
     };
 
     var handleMove = function(e) {
@@ -191,8 +192,8 @@ $(function() {
 
     var handleEnd = function(e){
         e.preventDefault();
-        currentX = e.originalEvent.touches[0].clientX;
-        currentY = e.originalEvent.touches[0].clientY;
+        currentX = e.originalEvent.touches[0].pageX;
+        currentY = e.originalEvent.touches[0].pageY;
 
         if(currentX > originalX && currentY > originalY){
             diffX = currentX - originalX;
