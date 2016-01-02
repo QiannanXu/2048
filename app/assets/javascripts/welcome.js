@@ -54,5 +54,37 @@ $(function() {
         }
     };
 
+    var keyPress = function (code) {
+        if(code === 37 || code === 74)
+            moveGrid(4); // left
+        else if(code === 38 || code === 73)
+            moveGrid(1); // up
+        else if(code === 39 || code === 76)
+            moveGrid(2); // right
+        else if(code === 40 || code === 75)
+            moveGrid(3); // down
+    };
+
+    var moveGrid = function(direction) {
+        var x, y;
+        //up
+        if(direction === 1) {
+            console.log("up");
+            for(y = 0; y < 4; y++) {
+
+            }
+        } else if(direction === 2) {
+            console.log("right");
+        } else if(direction === 3) {
+            console.log("down");
+        } else if (direction === 4) {
+            console.log("left");
+        }
+    };
+
+    document.onkeydown = function(e) {
+        keyPress(e.keyCode);
+    };
+
     initGrid();
 });
