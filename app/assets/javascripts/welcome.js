@@ -3,7 +3,7 @@ $(function() {
     var touchElem = document.getElementsByClassName("touch")[0];
     var scoreElem = document.getElementsByClassName("score")[0];
 
-    var score = 0, grid;
+    var score = 0, sum, grid;
 
     var initGrid = function() {
         grid = [[-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1]];
@@ -111,6 +111,7 @@ $(function() {
         moveAllGridToOneDirection(direction);
         restructure();
         updateGrid();
+        getScore();
     };
 
     var moveAllGridToOneDirection = function(direction) {
@@ -166,6 +167,24 @@ $(function() {
             }
         }
 
+    };
+
+    var getScore = function () {
+        var x, y;
+        sum = 0;
+
+        for(x = 0; x < 4; x++){
+            for(y = 0; y < 4; y++){
+                if(grid[x][y] !== -1){
+                    sum += grid[x][y];
+                }
+            }
+        }
+        updateScore();
+    };
+
+    var updateScore = function() {
+        scoreElem.innerHTML = (score + sum) + "pts";
     };
 
     document.onkeydown = function(e) {
