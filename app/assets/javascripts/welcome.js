@@ -179,9 +179,69 @@ $(function() {
         scoreElem.innerHTML = score + "pts";
     };
 
+    var handleStart = function(e){
+        e.preventDefault();
+        originalX = e.originalEvent.touches[0].clientX;
+        originalY = e.originalEvent.touches[0].clientY;
+    };
+
+    var handleMove = function(e) {
+        e.preventDefault();
+    };
+
+    var handleEnd = function(e){
+        e.preventDefault();
+        currentX = e.originalEvent.touches[0].clientX;
+        currentY = e.originalEvent.touches[0].clientY;
+
+        if(currentX > originalX && currentY > originalY){
+            diffX = currentX - originalX;
+            diffY = currentY - originalY;
+            //right-down
+            if (diffX > diffY){
+                moveGrid(2);
+            } else {
+                moveGrid(3);
+            }
+        } else if(currentX > originalX && currentY < originalY){
+            diffX = currentX - originalX;
+            diffY = originalY - currentY;
+
+            //right-up
+            if(diffX > diffY){
+                moveGrid(2);
+            } else {
+                moveGrid(1);
+            }
+        } else if(currentX < originalX && currentY < originalY){
+            //left-up
+            diffX = originalX - currentX;
+            diffY = originalY - currentY;
+
+            if(diffX > diffY){
+                moveGrid(4);
+            } else {
+                moveGrid(1);
+            }
+        } else {
+            //left-down
+            diffX = originalX - currentX;
+            diffY = currentY - originalY;
+            if(diffX > diffY) {
+                moveGrid(4);
+            } else {
+                moveGrid(3);
+            }
+        }
+    };
+
     document.onkeydown = function(e) {
         keyPress(e.keyCode);
     };
+
+    touchElem.addEventListener("touchstart", handleStart, false);
+    touchElem.addEventListener("touchmove", handleMove, false);
+    touchElem.addEventListener("touchend", handleEnd, false);
 
     initGrid();
 });
