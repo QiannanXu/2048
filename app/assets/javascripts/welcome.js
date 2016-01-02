@@ -6,13 +6,13 @@ $(function() {
     var score = 0, grid;
 
     var initGrid = function() {
-        generateNumber();
+        grid = [[-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1]];
+
+        restructure();
         updateGrid();
     };
 
-    var generateNumber = function () {
-        grid = [[-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1]];
-
+    var restructure = function () {
         var x, y, possibles = [];
 
         for(x = 0; x < 4; x++) {
@@ -66,13 +66,23 @@ $(function() {
     };
 
     var moveGrid = function(direction) {
-        var x, y;
+        moveAllGridToOneDirection(direction);
+
+        var x, y, j;
         //up
         if(direction === 1) {
-            console.log("up");
-            for(y = 0; y < 4; y++) {
-
-            }
+            //console.log("up");
+            //for(y = 0; y < 4; y++) {
+            //    for(x = 0; x < 3; x++) {
+            //        if(grid[x][y] === grid[x+1][y] && grid[x][y] !== -1) {
+            //            grid[x][y] = grid[x][y] * 2;
+            //            for(j = x+1; j < 3; j++) {
+            //                grid[j][y] = grid[j+1][y];
+            //            }
+            //            grid[3][y] = -1;
+            //        }
+            //    }
+            //}
         } else if(direction === 2) {
             console.log("right");
         } else if(direction === 3) {
@@ -80,6 +90,64 @@ $(function() {
         } else if (direction === 4) {
             console.log("left");
         }
+
+        restructure();
+        updateGrid();
+    };
+
+    var moveAllGridToOneDirection = function(direction) {
+        var x, y, j;
+
+        if(direction === 1) {
+            //up
+            for(y = 0; y < 4; y++){
+                for(x = 0; x <= 2; x++) {
+                    for(j = 3; j > x; j--) {
+                        if(grid[j][y] > grid[j-1][y]) {
+                            grid[j-1][y] = grid[j][y];
+                            grid[j][y] = -1;
+                        }
+                    }
+                }
+            }
+        } else if(direction === 2) {
+            //right
+            for(x = 0; x < 4; x++){
+                for(y = 3; y > 0; y--){
+                    for(j = 0; j < y; j++){
+                        if(grid[x][j] > grid[x][j+1]){
+                            grid[x][j+1] = grid[x][j];
+                            grid[x][j] = -1;
+                        }
+                    }
+                }
+            }
+        } else if(direction === 3) {
+            //down
+            for(y = 0; y < 4; y++){
+                for(x = 3; x >= 1; x--){
+                    for(j = 0; j < x; j++){
+                        if(grid[j][y] > grid[j+1][y]){
+                            grid[j+1][y] = grid[j][y];
+                            grid[j][y] = -1;
+                        }
+                    }
+                }
+            }
+        } else if(direction === 4){
+            //left
+            for(x = 0; x < 4; x++){
+                for(y = 0; y < 3; y++){
+                    for(j = 3; j > y; j--){
+                        if(grid[x][j] > grid[x][j-1]){
+                            grid[x][j-1] = grid[x][j];
+                            grid[x][j] = -1;
+                        }
+                    }
+                }
+            }
+        }
+
     };
 
     document.onkeydown = function(e) {
