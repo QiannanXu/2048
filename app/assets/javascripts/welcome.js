@@ -71,26 +71,44 @@ $(function() {
         var x, y, j;
         //up
         if(direction === 1) {
-            //console.log("up");
-            //for(y = 0; y < 4; y++) {
-            //    for(x = 0; x < 3; x++) {
-            //        if(grid[x][y] === grid[x+1][y] && grid[x][y] !== -1) {
-            //            grid[x][y] = grid[x][y] * 2;
-            //            for(j = x+1; j < 3; j++) {
-            //                grid[j][y] = grid[j+1][y];
-            //            }
-            //            grid[3][y] = -1;
-            //        }
-            //    }
-            //}
+            for(y = 0; y < 4; y++) {
+                for(x = 0; x < 3; x++) {
+                    if(grid[x][y] === grid[x+1][y] && grid[x][y] !== -1) {
+                        grid[x][y] *=2;
+                        grid[x+1][y] = -1;
+                    }
+                }
+            }
         } else if(direction === 2) {
-            console.log("right");
+            for(x = 0; x < 4; x++){
+                for(y = 3; y > 0; y--){
+                    if(grid[x][y] === grid[x][y-1] && grid[x][y] !== -1){
+                        grid[x][y] *= 2;
+                        grid[x][y-1] = -1;
+                    }
+                }
+            }
         } else if(direction === 3) {
-            console.log("down");
+            for(y = 0; y < 4; y++) {
+                for(x = 3; x > 0; x--) {
+                    if(grid[x][y] === grid[x-1][y] && grid[x][y] !== -1){
+                        grid[x][y] *= 2;
+                        grid[x-1][y] = -1;
+                    }
+                }
+            }
         } else if (direction === 4) {
-            console.log("left");
+            for(x = 0; x < 4; x++){
+                for(y = 0; y < 3; y++){
+                    if(grid[x][y] === grid[x][y+1] && grid[x][y] !== -1){
+                        grid[x][y] *= 2;
+                        grid[x][y+1] = -1;
+                    }
+                }
+            }
         }
 
+        moveAllGridToOneDirection(direction);
         restructure();
         updateGrid();
     };
