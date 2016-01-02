@@ -1,11 +1,8 @@
-body {
-  width: 500px;
-  margin: 0 auto;
-}
-
 header {
+  width: 500px;
   height: 50px;
   padding: 20px;
+  margin: 0 auto;
 
   .title {
     display: inline-block;
@@ -29,23 +26,24 @@ header {
   width: 500px;
   height: 500px;
   position: relative;
+  margin: 0 auto;
 
   .grid {
-    padding: 10px;
-    width: 480px;
-    height: 480px;
+    padding: 1%;
+    width: 96%;
+    height: 96%;
     background-color: #dddddd;
     border-radius: 8px;
     box-shadow: 0 3px 0 #bbbbbb inset;
 
     div {
       display: inline-block;
-      width: 110px;
-      height: 110px;
-      margin: 5px;
+      width: 24%;
+      height: 24%;
+      margin: 0.5%;
       border-radius: 5px;
       float:left;
-      line-height: 100px;
+      line-height: 2.5;
       text-align: center;
       background-color: #ffffff;
     }
@@ -61,7 +59,7 @@ header {
 }
 
 .grid div {
-  font-size: 60px;
+  font-size: 70px;
 
   &.bv {
     background-color: white;
@@ -94,26 +92,56 @@ header {
   &.b128 {
     background-color: #FBCDDA;
     box-shadow: 0px 0px 15px #F99FB9 inset, 0px 3px 0px #CCC;
-    font-size: 50px;
+    font-size: 60px;
   }
   &.b256 {
     background-color: #FFE5CA;
     box-shadow: 0px 0px 15px #FFC993 inset, 0px 3px 0px #CCC;
-    font-size: 50px;
+    font-size: 60px;
   }
   &.b512 {
     background-color: #FFA200;
     box-shadow: 0px 0px 15px #FFCD77 inset, 0px 3px 0px #CCC;
-    font-size: 50px;
+    font-size: 60px;
   }
   &.b1024 {
     background-color: #FFFA87;
     box-shadow: 0px 0px 15px #FFF547 inset, 0px 3px 0px #CCC; font-size: 40px;
-    font-size: 40px;
+    font-size: 50px;
   }
   &.b2048 {
     background-color: #333;
     box-shadow: 0px 0px 15px #555 inset, 0px 3px 0px #CCC;
-    font-size: 40px;
+    font-size: 50px;
+  }
+}
+
+@media only screen and (min-width: 320px) {
+  header {
+    width: 320px;
+  }
+  .game {
+    width: 320px;
+    height: 320px;
+  }
+}
+
+@media only screen and (min-width: 414px) {
+  header {
+    width: 414px;
+  }
+  .game {
+    width: 414px;
+    height: 414px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  header {
+    width: 768px;
+  }
+  .game {
+    width: 768px;
+    height: 768px;
   }
 }
