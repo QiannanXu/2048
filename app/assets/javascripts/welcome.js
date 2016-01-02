@@ -1,7 +1,7 @@
 $(function() {
     var gridElem = document.getElementsByClassName("grid")[0];
     var touchElem = document.getElementsByClassName("touch")[0];
-    var scoreElem = document.getElementsByClassName("score")[0];
+    var scoreElem = document.getElementsByClassName("value")[0];
 
     var score = 0, sum, grid;
 
@@ -66,6 +66,7 @@ $(function() {
     };
 
     var moveGrid = function(direction) {
+        sum = 0;
         moveAllGridToOneDirection(direction);
 
         var x, y, j;
@@ -76,6 +77,7 @@ $(function() {
                     if(grid[x][y] === grid[x+1][y] && grid[x][y] !== -1) {
                         grid[x][y] *=2;
                         grid[x+1][y] = -1;
+                        sum += grid[x][y];
                     }
                 }
             }
@@ -85,6 +87,7 @@ $(function() {
                     if(grid[x][y] === grid[x][y-1] && grid[x][y] !== -1){
                         grid[x][y] *= 2;
                         grid[x][y-1] = -1;
+                        sum += grid[x][y];
                     }
                 }
             }
@@ -94,6 +97,7 @@ $(function() {
                     if(grid[x][y] === grid[x-1][y] && grid[x][y] !== -1){
                         grid[x][y] *= 2;
                         grid[x-1][y] = -1;
+                        sum += grid[x][y];
                     }
                 }
             }
@@ -103,6 +107,7 @@ $(function() {
                     if(grid[x][y] === grid[x][y+1] && grid[x][y] !== -1){
                         grid[x][y] *= 2;
                         grid[x][y+1] = -1;
+                        sum += grid[x][y];
                     }
                 }
             }
@@ -111,7 +116,7 @@ $(function() {
         moveAllGridToOneDirection(direction);
         restructure();
         updateGrid();
-        getScore();
+        updateScore();
     };
 
     var moveAllGridToOneDirection = function(direction) {
@@ -169,22 +174,9 @@ $(function() {
 
     };
 
-    var getScore = function () {
-        var x, y;
-        sum = 0;
-
-        for(x = 0; x < 4; x++){
-            for(y = 0; y < 4; y++){
-                if(grid[x][y] !== -1){
-                    sum += grid[x][y];
-                }
-            }
-        }
-        updateScore();
-    };
-
     var updateScore = function() {
-        scoreElem.innerHTML = (score + sum) + "pts";
+        score += sum;
+        scoreElem.innerHTML = score + "pts";
     };
 
     document.onkeydown = function(e) {

@@ -17,6 +17,11 @@ header {
     float: right;
     line-height: 50px;
     font-size: 20px;
+
+    p {
+      display: inline-block;
+      margin: 0;
+    }
   }
 }
 
