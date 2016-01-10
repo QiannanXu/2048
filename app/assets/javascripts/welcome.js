@@ -38,18 +38,19 @@ $(function() {
     };
 
     var updateGrid = function() {
-        var e, x, y;
+        var div, p, x, y;
 
         for(x = 0; x < 4; x++) {
             for(y = 0; y < 4; y++) {
-                e = gridElem.getElementsByTagName("div")[(x * 4) + y];
+                div = gridElem.getElementsByTagName("div")[(x * 4) + y];
+                p = gridElem.getElementsByTagName("p")[(x * 4) + y];
 
                 if(grid[x][y] !== -1) {
-                    e.innerHTML = grid[x][y];
-                    e.setAttribute("class", "b" + grid[x][y]);
+                    p.innerHTML = grid[x][y];
+                    div.setAttribute("class", "b" + grid[x][y]);
                 } else {
-                    e.innerHTML = "";
-                    e.setAttribute("class", "bv");
+                    p.innerHTML = "";
+                    div.setAttribute("class", "bv");
                 }
             }
         }

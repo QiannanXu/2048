@@ -1,8 +1,12 @@
 header {
   width: 500px;
-  height: 50px;
   padding: 20px;
-  margin: 0 auto;
+  margin: 30px auto;
+  color: #A60302;
+
+  h1 {
+    font-size: 50px;
+  }
 
   .title {
     display: inline-block;
@@ -11,9 +15,8 @@ header {
 
   .score {
     display: inline-block;
-    float: right;
-    line-height: 50px;
-    font-size: 20px;
+    font-size: 30px;
+    padding-left: 150px;
 
     p {
       display: inline-block;
@@ -61,56 +64,71 @@ header {
 .grid div {
   font-size: 70px;
 
+  p {
+    display: none;
+  }
+
   &.bv {
     background-color: white;
     box-shadow: 0px 0px 15px #DDD inset, 0px 3px 0px #CCC;
   }
   &.b2 {
-    background-color: #EAF4F9;
+    background: #EAF4F9 image-url("2.jpg");
+    background-size: cover;
     box-shadow: 0px 0px 15px #CAE9F7 inset, 0px 3px 0px #CCC;
   }
   &.b4 {
-    background-color: #E0F5FF;
+    background: #E0F5FF image-url("4.jpg");
+    background-size: cover;
     box-shadow: 0px 0px 15px #C1EBFF inset, 0px 3px 0px #CCC;
   }
   &.b8 {
-    background-color: #C9EDFF;
+    background: #C9EDFF image-url("8.jpg");
+    background-size: cover;
     box-shadow: 0px 0px 15px #96DDFF inset, 0px 3px 0px #CCC;
   }
   &.b16 {
-    background-color: #CCF3F3;
+    background: #CCF3F3 image-url("16.jpg");
+    background-size: cover;
     box-shadow: 0px 0px 15px #93F2F2 inset, 0px 3px 0px #CCC;
   }
   &.b32 {
-    background-color: #D5EEBC;
+    background: #D5EEBC image-url("32.jpg");
+    background-size: cover;
     box-shadow: 0px 0px 15px #C0ED93 inset, 0px 3px 0px #CCC;
   }
   &.b64 {
-    background-color: #E8DBFF;
+    background: #E8DBFF image-url("64.jpg");
+    background-size: cover;
     box-shadow: 0px 0px 15px #CDB2FF inset, 0px 3px 0px #CCC;
   }
   &.b128 {
-    background-color: #FBCDDA;
+    background: #FBCDDA image-url("128.jpg");
+    background-size: cover;
     box-shadow: 0px 0px 15px #F99FB9 inset, 0px 3px 0px #CCC;
     font-size: 60px;
   }
   &.b256 {
-    background-color: #FFE5CA;
+    background: #FFE5CA image-url("256.jpg");
+    background-size: cover;
     box-shadow: 0px 0px 15px #FFC993 inset, 0px 3px 0px #CCC;
     font-size: 60px;
   }
   &.b512 {
-    background-color: #FFA200;
+    background: #FFA200 image-url("512.jpg");
+    background-size: cover;
     box-shadow: 0px 0px 15px #FFCD77 inset, 0px 3px 0px #CCC;
     font-size: 60px;
   }
   &.b1024 {
-    background-color: #FFFA87;
+    background: #FFFA87 image-url("1024.jpg");
+    background-size: cover;
     box-shadow: 0px 0px 15px #FFF547 inset, 0px 3px 0px #CCC; font-size: 40px;
     font-size: 50px;
   }
   &.b2048 {
-    background-color: #333;
+    background: #333 image-url("2056.jpg");
+    background-size: cover;
     box-shadow: 0px 0px 15px #555 inset, 0px 3px 0px #CCC;
     font-size: 50px;
   }
